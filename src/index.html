@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BudgetWise</title>
+    <link rel="web icon" href="./assets/images/icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./output.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body class="bg-background min-h-screen font-Dongle">
+    <!--- Header Section -->
+    <header
+      class="bg-seashell shadow-md sticky top-0 z-50 border-b border-bone"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"
+      >
+        <h1 class="text-5xl font-bold text-skyblue tracking-wide">
+          BudgetWise
+        </h1>
+        <button id="menu-toggle" class="md:hidden w-10 h-10 cursor-pointer">
+          <img
+            src="./assets/images/hamburger-list-menu-svgrepo-com.png"
+            alt="sidemenu"
+          />
+        </button>
+
+        <!-- Navbar Section -->
+        <nav class="hidden md:flex space-x-6 text-4xl font-semibold">
+          <a
+            href="/index"
+            onclick="aClick(event)"
+            class="text-skyblue hover:text-palecyan transition"
+            >Home</a
+          >
+          <a
+            href="/savings"
+            onclick="aClick(event)"
+            class="text-skyblue hover:text-palecyan transition"
+            >Fund</a
+          >
+          <a href="#" class="text-skyblue hover:text-palecyan transition"
+            >Settings</a
+          >
+          <a
+            href="/profile"
+            onclick="aClick(event)"
+            class="text-skyblue hover:text-palecyan transition"
+            >Profile</a
+          >
+        </nav>
+      </div>
+
+      <!-- Mobile Side Menu -->
+      <div
+        id="mobile-menu"
+        class="fixed top-0 right-0 h-full min-w-10/12 max-w-xs bg-seashell border-l border-bone z-50 translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col px-6 py-8 space-y-8 rounded-l-3xl shadow-xl"
+      >
+        <div class="flex justify-end">
+          <button
+            id="close-menu"
+            class="text-3xl text-salmonpink hover:scale-110 transition"
+          >
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
+        <div
+          class="text-center text-2xl font-bold text-salmonpink tracking-wide"
+        >
+          My Dashboard
+        </div>
+
+        <!-- Mobile  -->
+        <nav class="flex flex-col gap-5 text-lg font-medium text-neutral-950">
+          <a
+            href="#"
+            class="flex items-center gap-3 hover:text-skyblue transition"
+            ><i class="fa-solid fa-house-chimney"></i>Home</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 hover:text-skyblue transition"
+            ><i class="fas fa-crosshairs"></i>Fund</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 hover:text-skyblue transition"
+            ><i class="fa-solid fa-gear"></i>Settings</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 hover:text-skyblue transition"
+            ><i class="fas fa-user"></i>Profile</a
+          >
+        </nav>
+        <div class="mt-auto border-t border-bone pt-6">
+          <button
+            class="w-full flex items-center justify-center gap-2 text-persianPink hover:underline transition text-2xl"
+          >
+            <i class="fa-solid fa-right-from-bracket text-sm"></i> Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="root">
+      <!-- Budget Section -->
+      <main
+        class="max-w-5xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8"
+      >
+        <section
+          class="md:col-span-1 bg-seashell p-6 rounded-3xl shadow border border-bone"
+        >
+          <h2
+            class="text-3xl font-semibold mb-4 text-persianPink flex flex-row items-center gap-1"
+          >
+            Set Your Budget
+            <img
+              src="./assets/images/budget.png"
+              class="w-7 h-7"
+              alt="moneybag"
+            />
+          </h2>
+          <form id="budget-form" class="space-y-4">
+            <input
+              type="number"
+              placeholder="Enter initial budget"
+              id="budget-input"
+              class="w-full px-4 py-3 text-2xl bg-alabaster rounded-xl focus:outline-none focus:ring-1 focus:ring-persianPink"
+            />
+            <button
+              type="submit"
+              class="w-full bg-skyblue hover:bg-palecyan text-seashell font-medium py-2 rounded-xl transition-all text-2xl"
+            >
+              Set Budget
+            </button>
+          </form>
+        </section>
+
+        <!-- Add Transactions Section -->
+        <section
+          class="md:col-span-2 bg-seashell p-6 rounded-3xl shadow border border-bone"
+        >
+          <h2 class="text-3xl font-medium mb-4 text-persianPink">
+            Add Transaction
+          </h2>
+          <form
+            id="transaction-form"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            <input
+              id="title"
+              type="text"
+              placeholder="Title"
+              class="col-span-1 px-4 py-2 bg-alabaster rounded-lg focus:outline-none focus:ring-1 focus:ring-palecyan text-2xl"
+            />
+            <input
+              id="amount"
+              type="number"
+              placeholder="Amount"
+              class="col-span-1 px-4 py-2 bg-alabaster rounded-lg focus:outline-none focus:ring-1 focus:ring-palecyan text-2xl"
+            />
+            <select
+              id="type"
+              class="col-span-1 px-4 py-2 bg-alabaster rounded-lg focus:outline-none focus:ring-1 focus:ring-palecyan text-2xl"
+            >
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+            <button
+              type="submit"
+              class="col-span-full bg-persianPink hover:bg-salmonpink text-white font-medium py-2 rounded-lg transition-all text-2xl"
+            >
+              Add
+            </button>
+          </form>
+        </section>
+        <!-- Budget summary section -->
+        <section class="md:col-span-3 grid grid-cols-1 sm:grid-cols-4 gap-6">
+          <div
+            class="bg-seashell p-6 rounded-2xl shadow border border-bone text-center hover:scale-105 hover:shadow-md transition-all"
+          >
+            <h3 class="text-persianPink text-2xl uppercase">Budget</h3>
+            <p id="budget-amount" class="text-3xl font-bold">0</p>
+          </div>
+          <div
+            class="bg-seashell p-6 rounded-2xl shadow border border-smith text-center hover:scale-105 hover:shadow-md transition-all relative"
+          >
+            <h3 class="text-persianPink text-2xl uppercase">Income</h3>
+            <p id="income-amount" class="text-3xl font-bold text-seagreen">
+              +0
+            </p>
+          </div>
+          <div
+            class="bg-seashell p-6 rounded-2xl shadow border border-salmonpink text-center hover:scale-105 hover:shadow-md transition-all"
+          >
+            <h3 class="text-persianPink text-2xl uppercase">Expenses</h3>
+            <p id="expense-amount" class="text-3xl font-bold text-salmonpink">
+              -0
+            </p>
+          </div>
+          <div
+            class="bg-seashell p-6 rounded-2xl shadow border border-bone text-center hover:scale-105 hover:shadow-md transition-all"
+          >
+            <h3 class="text-persianPink text-2xl uppercase">Balance</h3>
+            <p id="balance-amount" class="text-3xl font-bold text-blue-500">
+              0
+            </p>
+          </div>
+        </section>
+        <!-- Transactions Section -->
+        <section
+          class="md:col-span-3 bg-seashell p-6 rounded-3xl shadow border border-bone mt-4"
+        >
+          <h2 class="text-4xl font-medium text-persianPink mb-4">
+            Transactions
+          </h2>
+          <div class="flex flex-wrap gap-4 mb-4 items-center"></div>
+          <ul id="transaction-list" class="space-y-3"></ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
