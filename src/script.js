@@ -319,7 +319,5 @@ function checkState() {
   }
 }
 
-document.getElementById("filter-type").addEventListener("change", showBudget);
-document.getElementById("sort-order").addEventListener("change", showBudget);
 window.addEventListener("DOMContentLoaded", showBudget);
 window.addEventListener("popstate", checkState);
