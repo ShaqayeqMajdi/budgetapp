@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --font-Dongle: "Dongle", sans-serif;
+
+  --color-background: #090432;
+  --color-lightBlue: #5d5fef;
+  --color-mediumBlue: #8195e5;
+  --color-darkBlue: #120b48;
+  --color-lightGray: #d0d3d9;
+  --color-persianPink: #ff8c8c;
+  --color-alabaster: #f7f3ed;
+  --color-salmonpink: #ff9b9b;
+  --color-smith: #a3d9a5;
+  --color-seagreen: #4ca96e;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BudgetWise</title>
+    <link rel="web icon" href="./assets/image/icon.png">
+    <link href="./output.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet"/>
+  </head>
+  <body class="bg-background font-Dongle">
+
+    <button onclick="toggleSidebar()" class="md:hidden fixed top-4 left-4 z-50 bg-lightBlue p-2 rounded-md shadow-md">
+      <img src="./assets/icon/menu.svg" alt="Menu" class="w-6 h-6" />
+    </button>
+
+    <div class="flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen bg-darkBlue text-white shadow-2xl flex flex-col justify-between py-6 px-4 transition-transform duration-300 transform -translate-x-full md:translate-x-0 md:static md:block">
+      <div class="flex items-center gap-2 mb-10">
+        <span class="text-white text-5xl font-bold">BudgetWise</span>
+      </div>
+
+      <!-- NavBar-->
+      <nav class="space-y-4">
+        <a href="/mainpage" onclick="activeSidebarItem(this); aClick(event)" class="sidebar-button w-full flex items-center gap-3 bg-lightBlue text-white py-3 px-4 rounded-xl text-2xl font-semibold">
+          <img src="./assets/icon/dashboard.svg" alt="Dashboard" class="w-4 h-4"/>
+          Dashboard
+        </a>
+
+        <button onclick="activeSidebarItem(this)" class="sidebar-button w-full flex items-center gap-3 text-lightGray py-3 px-4 text-2xl">
+          <img src="./assets/icon/fund.svg" alt="Analytics" class="w-4 h-4" />
+          Analytics
+        </button>
+
+        <a href="/bank" onclick="activeSidebarItem(this); aClick(event)" class="sidebar-button w-full flex items-center gap-3 text-lightGray py-3 px-4 text-2xl">
+          <img src="./assets/icon/wallet.svg" alt="Wallet" class="w-4 h-4" />
+          My Wallet
+        </a>
+
+        <a href="/account" onclick="activeSidebarItem(this); aClick(event)" class="sidebar-button w-full flex items-center gap-3 text-lightGray py-3 px-4 text-2xl">
+          <img src="./assets/icon/user.svg" alt="Accounts" class="w-4 h-4" />
+          Accounts
+        </a>
+
+        <button onclick="activeSidebarItem(this)" class="sidebar-button w-full flex items-center gap-3 text-lightGray py-3 px-4 text-2xl">
+          <img src="./assets/icon/settings.svg" alt="Settings" class="w-4 h-4"/>
+          Settings
+        </button>
+      </nav>
+
+      <div class="h-px bg-[#2E3064] my-6"></div>
+      <div class="space-y-4">
+        <a href="/security" onclick="activeSidebarItem(this); aClick(event)" class="sidebar-button w-full flex items-center gap-3 text-lightGray py-3 px-4 text-2xl">
+          <img src="./assets/icon/security.svg" alt="Security" class="w-4 h-4"/>
+          Security
+        </a>
+
+        <button onclick="activeSidebarItem(this)" class="sidebar-button w-full flex items-center gap-3 text-lightGray py-3 px-4 text-2xl">
+          <img src="./assets/icon/question.svg" alt="Help" class="w-4 h-4" />
+          Help Centre
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 px-4 mt-10">
+        <img src="./assets/image/prf.png" alt="Avatar" class="w-10 h-10 rounded-full"/>
+        <div>
+          <p class="text-white font-semibold text-xl">Benedict Spencer</p>
+        </div>
+      </div>
+    </aside>
+<div id="root">
+     <main class="md:ml-32 ml-20 max-w-5xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <section class="md:col-span-1 bg-darkBlue p-6 rounded-3xl shadow-md">
+          <h2 class="text-3xl font-semibold mb-4 text-mediumBlue flex flex-row items-center gap-1">
+            Set Your Budget
+            <img src="./assets/image/budget.png" class="w-7 h-7" alt="moneybag"/>
+          </h2>
+          <form id="budget-form" class="space-y-4">
+            <input type="number" placeholder="Enter initial budget" id="budget-input" class="w-full px-4 py-3 text-2xl bg-alabaster rounded-xl focus:outline-none focus:ring-1 focus:ring-lightBlue"/>
+            <button  type="submit" class="w-full bg-lightBlue  text-seashell font-medium py-2 rounded-xl transition-all text-2xl">Set Budget</button>
+          </form>
+        </section>
+
+        <!-- Add Transactions Section -->
+        <section class="md:col-span-2 bg-darkBlue  p-6 rounded-3xl shadow-md">
+          <h2 class="text-3xl font-bold mb-4 text-mediumBlue">Add Transaction</h2>
+          <form id="transaction-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <input id="title" type="text" placeholder="Title" class="col-span-1 px-4 py-2 bg-alabaster rounded-lg focus:outline-none focus:ring-1 focus:ring-palecyan text-2xl"/>
+            <input id="amount" type="number" placeholder="Amount" class="col-span-1 px-4 py-2 bg-alabaster rounded-lg focus:outline-none focus:ring-1 focus:ring-palecyan text-2xl"/>
+            <select id="type" class="col-span-1 px-4 py-2 bg-alabaster rounded-lg focus:outline-none focus:ring-1 focus:ring-palecyan text-2xl" >
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+            <button type="submit" class="col-span-full bg-lightBlue text-white font-medium py-2 rounded-lg transition-all text-2xl">Add</button>
+          </form>
+        </section>
+        <!-- Budget summary section -->
+        <section class="md:col-span-3 grid grid-cols-1 sm:grid-cols-4 gap-6">
+          <div class="bg-darkBlue  p-6 rounded-2xl shadow-md border-2 border-bone text-center hover:scale-105  transition-all">
+            <h3 class="text-mediumBlue text-2xl uppercase">Budget</h3>
+            <p id="budget-amount" class="text-3xl font-bold">0</p>
+          </div>
+          <div class="bg-darkBlue  p-6 rounded-2xl shadow-md border-2 border-smith text-center hover:scale-105 transition-all relative">
+            <h3 class="text-mediumBlue text-2xl uppercase">Income</h3>
+            <p id="income-amount" class="text-3xl font-bold text-seagreen">+0</p>
+          </div>
+          <div class="bg-darkBlue  p-6 rounded-2xl shadow-md border-2 border-salmonpink text-center hover:scale-105 transition-all">
+            <h3 class="text-mediumBlue text-2xl uppercase">Expenses</h3>
+            <p id="expense-amount" class="text-3xl font-bold text-salmonpink">-0</p>
+          </div>
+          <div class="bg-darkBlue  p-6 rounded-2xl shadow-md border-2 border-bone text-center hover:scale-105 transition-all">
+            <h3 class="text-mediumBlue text-2xl uppercase">Balance</h3>
+            <p id="balance-amount" class="text-3xl font-bold text-blue-500">0</p>
+          </div>
+        </section>
+        <!-- Transactions Section -->
+        <section class="md:col-span-3 bg-darkBlue  p-6 rounded-3xl shadow-md mt-4">
+          <h2 class="text-4xl font-medium text-mediumBlue mb-4">Transactions</h2>
+          <ul id="transaction-list" class="space-y-3"></ul>
+        </section>
+      </main>
+  </div>
+</div>
+</body>
+</html>
